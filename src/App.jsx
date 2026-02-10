@@ -17,15 +17,36 @@ const About = lazy(() => import("./pages/about"));
 const Contact = lazy(() => import("./pages/contact"));
 
 const Layout = () => {
-  // 1. Get the current location object
   const location = useLocation();
+  const [scrollHistory, setScrollHistory] = useState({});
+
+  useEffect(() => {
+    if (scrollHistory[location.key]) {
+      window.scrollTo(0, scrollHistory[location.key]);
+    } else {
+      window.scrollTo(0, 0);
+    }
+
+    const saveScrollPosition = () => {
+      setScrollHistory((prev) => ({
+        ...prev,
+        [location.key]: window.scrollY,
+      }));
+    };
+
+
+    window.addEventListener("beforeunload", saveScrollPosition);
+
+    return () => {
+      saveScrollPosition();
+      window.removeEventListener("beforeunload", saveScrollPosition);
+    };
+  }, [location.key]);
 
   return (
     <div className="app 2xl:max-w-[2500px] mx-auto min-h-screen flex flex-col justify-between">
       <Header />
-
       <Outlet />
-
       <Footer />
     </div>
   );
@@ -78,7 +99,7 @@ function App() {
     const fakeDataFetch = () => {
       setTimeout(() => {
         setIsLoading(false);
-      }, 1500);
+      }, 0);
     };
 
     fakeDataFetch();

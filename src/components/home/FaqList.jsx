@@ -7,41 +7,47 @@ import { FiArrowRight } from 'react-icons/fi';
 const faqData = [
   {
     id: 1,
-    question: "1. What to prepare trip to Asia",
-    answer: "You should prepare your passport, visa, travel insurance, and pack appropriate clothing for the tropical climate. Don't forget universal power adapters and local currency."
+    question: "What makes a travel agency reliable for planning holidays?",
+    answer: `A dependable travel agency in Kerala offers clear communication, transparent
+              pricing, well-structured itineraries, and support throughout the trip. Reliability comes
+              from proper coordination of stays, transport, and experiences without last-minute
+              issues.`
   },
   {
     id: 2,
-    question: "2. What document you need before go to asia",
-    answer: "A valid passport with at least 6 months validity, a tourist visa (depending on your nationality), and flight tickets are the essentials."
+    question: "Do tour operators help with hotel bookings and transportation?",
+    answer: `Yes, professional tour operators in Kerala arrange accommodations, local transport,
+and sightseeing as part of the travel plan. This ensures smoother movement between
+destinations and a more comfortable overall journey.`
   },
   {
     id: 3,
-    question: "3. How to scheduling Asia trip itinerary",
-    answer: "Start by picking a region (e.g., Southeast Asia), allocate 3-4 days per city, and book internal flights or trains in advance to save costs."
+    question: "Can my trip be customized instead of choosing a fixed package?",
+    answer: `Yes, the tour operators in Kerala focus on creating personalized travel plans based
+on your interests, schedule, and budget, rather than offering one-size-fits-all
+packages.`
   },
   {
     id: 4,
-    question: "4. 8 Website must read before your trip",
-    answer: "Check out TripAdvisor, Lonely Planet, Agoda for booking, and local government tourism sites for the latest entry requirements."
+    question: "Is it possible to book international trips through a local agency?",
+    answer: `Yes, choosing the best international tour operators in Kerala gives you access to
+expert support for destination planning, visa guidance, accommodations, and
+complete travel coordination for a smooth overseas journey.`
   },
   {
     id: 5,
-    question: "5. This is the best budget you need to prepare",
-    answer: "Budget varies by country. For Southeast Asia, $50-100 USD per day is comfortable. For East Asia (Japan/Korea), budget $150-200 USD per day."
+    question: "Why book with a travel agency instead of planning it yourself?",
+    answer: `Working with a travel agency in Kerala saves time, avoids booking errors, and
+ensures better travel coordination. Reputed tours and travels in Kerala provide
+structured plans and reliable support throughout your journey.`
   },
-  {
-    id: 6,
-    question: "6. This site give you the information about travel to Asia",
-    answer: "Our website offers comprehensive guides, but you can also check WikiTravel and various travel blogs for specific hidden gems."
-  }
 ];
 
 // --- Individual Item (Stateless) ---
 // Now accepts `isOpen` and `onClick` from parent
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
   return (
-    <div className="border-b border-white/20">
+    <div className="border-b last:border-b-0 border-white/20">
       <button
         onClick={onClick}
         className="flex items-center justify-between w-full py-6 text-left focus:outline-none group"
@@ -105,20 +111,21 @@ const FaqList = () => {
       <div className="w-11/12 mx-auto">
         
         {/* Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-8">
+        <div className="flex flex-col lg:flex-row justify-between items-start mb-5 lg:mb-16 gap-5 lg:gap-8">
           <div className="lg:w-1/2">
             <h2 className="text-4xl md:text-4xl xl:text-5xl text-white font-messiri leading-tight">
-              Enjoy Our Best Quality <br />
-              Tour & Experience
+              Questions to Ask the<br/> Best Travel Agency<br/> in Kerala
             </h2>
           </div>
           <div className="lg:w-1/3 flex flex-col items-start space-y-6">
             <p className="text-gray-400 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+              Planning a trip often comes with many questions about destinations, bookings, and travel
+              arrangements. Here are clear answers to some of the most common doubts travelers have
+              before starting their journey.
             </p>
              <Link
               to={"/"}
-              className="w-fit group flex items-center gap-3 rounded-full bg-white px-8 py-4 text-black transition hover:bg-gray-300"
+              className="w-fit group flex items-center gap-3 rounded-full bg-primary hover:bg-white text-white hover:text-black transition duration-200 px-8 py-4 "
             >
               <span className="text-xs tracking-widest">GET STARTED</span>
               <FiArrowRight
@@ -130,7 +137,7 @@ const FaqList = () => {
         </div>
 
         {/* FAQ Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 mb-5 xl:mb-20">
           <div>
             {leftColumnData.map((item) => (
               <FAQItem 

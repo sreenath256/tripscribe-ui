@@ -13,66 +13,66 @@ import 'swiper/css/pagination';
 const placesData = [
   {
     id: 1,
-    title: "Phuket",
-    location: "Thailand",
+    title: "Kerala",
+    location: "India",
     price: 40000,
-    image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=2070&auto=format&fit=crop",
     category: "DESTINATION"
   },
   {
     id: 2,
-    title: "Kelingking",
-    location: "Indonesia",
+    title: "Delhi Agra",
+    location: "India",
     price: 2000,
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2076&auto=format&fit=crop",
     category: "DESTINATION"
   },
   {
     id: 3,
-    title: "Mt. Bromo",
-    location: "Indonesia",
+    title: "Delhi Agra Jaipur",
+    location: "India",
     price: 3500,
-    image: "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=2070&auto=format&fit=crop",
     category: "DESTINATION"
   },
   {
     id: 4,
-    title: "Old Bagan",
-    location: "Myanmar",
+    title: "Kullu Manali",
+    location: "India",
     price: 18000,
-    image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=2070&auto=format&fit=crop",
     category: "DESTINATION"
   },
   {
     id: 5,
-    title: "Ubud",
-    location: "Indonesia",
+    title: "Meghalaya",
+    location: "India",
     price: 18000,
-    image: "https://images.unsplash.com/photo-1554481923-a6918bd997bc?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1723651682975-3a6a9101c47d?q=80&w=1037&auto=format&fit=crop",
     category: "ACCOMODATION"
   },
   {
     id: 6,
-    title: "Marina Bay",
-    location: "Singapore",
+    title: "Kashmir",
+    location: "India",
     price: 24000,
-    image: "https://images.unsplash.com/photo-1506318164473-2dfd3ede3623?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=2070&auto=format&fit=crop",
     category: "ACTIVITY"
   },
   {
     id: 7,
-    title: "Mt. Fuji",
-    location: "Japan",
+    title: "Ootty",
+    location: "India",
     price: 48000,
-    image: "https://images.unsplash.com/photo-1576675784201-0e142b423952?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1546948630-1149ea60dc86?q=80&w=2070&auto=format&fit=crop",
     category: "ACTIVITY"
   },
   {
     id: 8,
-    title: "Padar Island",
-    location: "Indonesia",
+    title: "Kodaikkanal",
+    location: "India",
     price: 26000,
-    image: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?q=80&w=2070&auto=format&fit=crop",
     category: "DESTINATION"
   }
 ];
@@ -126,12 +126,12 @@ const FinePlace = () => {
       <div className="w-11/12 mx-auto">
         
         {/* Header Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-5 lg:mb-12">
           <h1 className="text-4xl md:text-5xl font-messiri font-medium text-black mb-4 tracking-tight">
-            Find Out The Best <br /> Travel Choice in Asia
+            Travel Through the<br/> Soul of India
           </h1>
           <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-            Explore our curated list of top destinations, accommodations, and activities.
+            Plan your trip with the best tour operators in Kerala, and step into journeys designed with clarity, comfort, and the right pace. Every route, stay, and experience is arranged to help you explore more while worrying less.
           </p>
         </div>
 
@@ -150,7 +150,7 @@ const FinePlace = () => {
                 {activeTab === tab && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-black rounded-full -z-10"
+                    className="absolute inset-0 bg-primary rounded-full -z-10"
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
@@ -202,10 +202,10 @@ const FinePlace = () => {
             </div>
 
             <div className="flex gap-3">
-              <button className="swiper-custom-prev w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-300 active:scale-95 disabled:opacity-50">
+              <button className="swiper-custom-prev w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
                 <ChevronLeft size={20} />
               </button>
-              <button className="swiper-custom-next w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-300 active:scale-95 disabled:opacity-50">
+              <button className="swiper-custom-next w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
                 <ChevronRight size={20} />
               </button>
             </div>

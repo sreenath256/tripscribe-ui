@@ -11,30 +11,30 @@ import 'swiper/css/pagination';
 const destinations = [
   {
     id: 1,
-    title: 'Kelingking Beach',
-    location: 'Nusa Penida, Bali',
-    imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop',
+    title: 'Kerala',
+    location: 'God\'s Own Country, India',
+    imageUrl: 'https://images.unsplash.com/photo-1593693411515-c20261bcad6e?q=80&w=2069&auto=format&fit=crop', // Houseboat/Backwaters
     className: 'md:col-span-1 md:row-span-2', // Tall card on the left
   },
   {
     id: 2,
-    title: 'Grand Palace',
-    location: 'Bangkok, Thailand',
-    imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop',
+    title: 'Kullu Manali',
+    location: 'Himachal Pradesh',
+    imageUrl: 'https://images.unsplash.com/photo-1675515642093-4fd5b6cca657?q=80&w=1035&auto=format&fit=crop', // Snow/Mountains
     className: 'md:col-span-1', // Top-right card 1
   },
   {
     id: 3,
-    title: 'Cappadocia',
-    location: 'Turkey',
-    imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop',
+    title: 'Meghalaya',
+    location: 'North East India',
+    imageUrl: 'https://images.unsplash.com/photo-1521437620269-f477f5437820?q=80&w=1973&auto=format&fit=crop', // Lush Green/Nature
     className: 'md:col-span-1', // Top-right card 2
   },
   {
     id: 4,
-    title: 'Padar Island',
-    location: 'East Nusa Tenggara',
-    imageUrl: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop',
+    title: 'Kashmir',
+    location: 'Jammu & Kashmir',
+    imageUrl: 'https://images.unsplash.com/photo-1627894485200-b92fb4353967?q=80&w=2070&auto=format&fit=crop', // Dal Lake/Shikara
     className: 'md:col-span-2', // Bottom-right wide card
   },
 ];
@@ -111,10 +111,10 @@ const DestinationGallery = () => {
 
           {/* Custom Navigation Arrows */}
           <div className="flex gap-3">
-            <button className="custom-prev-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-300 active:scale-95 disabled:opacity-50">
+            <button className="custom-prev-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
               <FiChevronLeft size={22} />
             </button>
-            <button className="custom-next-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-300 active:scale-95 disabled:opacity-50">
+            <button className="custom-next-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
               <FiChevronRight size={22} />
             </button>
           </div>

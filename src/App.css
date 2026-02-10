@@ -2,11 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Relieo";
+  src: url("./assets/font/Relieo-Display-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
 
 @theme {
   --font-Quicksand: "Quicksand", sans-serif;
   --font-messiri:  "El Messiri", sans-serif;
+  --font-Relieo:  "Relieo", sans-serif;
+
+  --color-primary: #4200f7;
 }
+
 
 html {
     scroll-behavior: smooth;
@@ -42,5 +52,6 @@ body {
 }
 
 p{
-  font-weight: 300;
+  font-weight: 400;
+   font-family: "Quicksand", sans-serif;
 }

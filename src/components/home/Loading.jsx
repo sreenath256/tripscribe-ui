@@ -38,7 +38,7 @@ const Preloader = () => {
           {brandName.split('').map((letter, i) => (
             <motion.span
               key={i}
-              className="text-2xl md:text-3xl xl:text-5xl font-messiri font-semibold text-black tracking-widest"
+              className="text-2xl md:text-3xl xl:text-4xl font-Relieo text-black tracking-widest"
               custom={i}
               variants={letterVariants}
               initial="initial"

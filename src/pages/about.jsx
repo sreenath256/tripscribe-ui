@@ -51,6 +51,7 @@ const AboutPage = () => {
           src="https://images.unsplash.com/photo-1504730655501-24c39ac53f0e?q=80&w=2070&auto=format&fit=crop"
           alt="Traveler looking at ancient temples"
           className="w-full h-full object-cover"
+          loading='lazy'
         />
         {/* Dark Overlay for Text Readability */}
         <div className="absolute inset-0 bg-black/40" />
@@ -86,7 +87,7 @@ const AboutPage = () => {
         </motion.h1>
       </div>
     </div>
-    
+
     <div className="w-full bg-white pt-20 py-16  overflow-hidden ">
       <motion.div
         className="w-11/12 mx-auto"
@@ -109,7 +110,7 @@ const AboutPage = () => {
         </motion.div>
 
         {/* --- Stats Cards --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 mb-10">
           {statsData.map((stat) => (
             <motion.div
               key={stat.id}
@@ -137,7 +138,7 @@ const AboutPage = () => {
           {/* Left Image - Temple */}
           <motion.div 
             variants={itemVariants}
-            className="lg:col-span-7 h-[300px] md:h-full relative overflow-hidden rounded-[40px]"
+            className="lg:col-span-7 h-[300px] md:h-full relative overflow-hidden rounded-[40px] hidden md:block"
           >
             <img 
               src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?q=80&w=1975&auto=format&fit=crop" 

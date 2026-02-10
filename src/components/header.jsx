@@ -2,51 +2,65 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { FiMenu, FiChevronDown, FiX, FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion'; // 1. Import motion
+import { LogoWhite,LogoBlue, LogoBlack } from '../assets';
 
 const NAV_ITEMS = [
   { label: 'HOME', href: '/' },
-  { label: 'ABOUT US', href: '/about' },
-  { 
-    label: 'DESTINATION', 
-    href: '/destination', 
-    submenu: [
-      { label: 'DESTINATION', href: '/destination' },
-      { label: 'PACKAGES', href: '/packages' },
-      { label: 'OFFERS', href: '/offers' }
-    ] 
-  },
-  { 
-    label: 'PAGE', 
-    href: '/page', 
-    submenu: [
-      { label: 'TEAM', href: '/team' },
-      { label: 'SERVICES', href: '/services' },
-    ] 
-  },
-  { 
-    label: 'BLOG', 
-    href: '/blog', 
-    submenu: [
-      { label: 'LATEST NEWS', href: '/blog/news' },
-      { label: 'ARCHIVES', href: '/blog/archives' }
-    ] 
-  },
+  { label: 'ABOUT US', href: '#' },
+  { label: 'DESTINATION', href: '#' },
+  { label: 'BLOG', href: '#' },
+  // { 
+  //   label: 'DESTINATION', 
+  //   href: '#', 
+  //   submenu: [
+  //     { label: 'DESTINATION', href: '#' },
+  //     { label: 'PACKAGES', href: '#' },
+  //     { label: 'OFFERS', href: '#' }
+  //   ] 
+  // },
+  // { 
+  //   label: 'PAGE', 
+  //   href: '#', 
+  //   submenu: [
+  //     { label: 'TEAM', href: '#' },
+  //     { label: 'SERVICES', href: '#' },
+  //   ] 
+  // },
+  // { 
+  //   label: 'BLOG', 
+  //   href: '#', 
+  //   submenu: [
+  //     { label: 'LATEST NEWS', href: '#' },
+  //     { label: 'ARCHIVES', href: '#' }
+  //   ] 
+  // },
 ];
 
 const Header = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false); // 1. New State for background
   const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      
+      // Handle Visibility (Hide on scroll down, show on up)
       if (currentScrollY < lastScrollY.current || currentScrollY < 10) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY.current && !isMobileMenuOpen) {
         setIsVisible(false);
       }
+
+      // 2. Handle Background Logic (Check if user scrolled past top)
+      if (currentScrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+
       lastScrollY.current = currentScrollY;
     };
 
@@ -73,17 +87,17 @@ const Header = () => {
       {/* ================= DESKTOP HEADER ================= */}
       <header 
         className={`
-          fixed top-0 left-0 right-0 z-50 flex items-center justify-between w-11/12 mx-auto py-6 
+          fixed top-0 left-0 right-0 z-50 flex items-center justify-between w-11/12 mx-auto py-4 xl:py-6 
           transition-transform duration-300 ease-in-out
-          ${isVisible ? 'translate-y-0' : '-translate-y-[200%]'} 
+          ${isVisible ? 'translate-y-0 ' : '-translate-y-[200%]'} 
         `}
       >
-        <Link to={'/'} className="text-4xl text-white tracking-wide cursor-pointer font-messiri">
-          tripscribe
+        <Link to={'/'} className="text-4xl  text-white tracking-wide cursor-pointer font-messiri transition-all duration-200">
+          <img className='-ml-3.5 -mt-2 h-14 xl:h-16 object-contain transition-all duration-200' src={isScrolled ? LogoBlue : LogoWhite} alt="" />
         </Link>
 
         {/* 2. Added layout prop to nav for smooth container resizing if needed */}
-        <nav className="hidden xl:flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-2 py-2 backdrop-blur-sm">
+        <nav className={`hidden xl:flex items-center gap-2 rounded-full border border-white/30  ${isScrolled ? 'bg-primary' : 'bg-white/5'} px-2 py-2 transition-all duration-200 backdrop-blur-sm`}>
           {NAV_ITEMS.map((item, index) => (
             <DesktopNavItem 
               key={index} 
@@ -95,11 +109,11 @@ const Header = () => {
 
         <button 
           onClick={() => setIsMobileMenuOpen(true)}
-          className="text-white hover:text-gray-300 transition-transform hover:scale-105 active:scale-95 xl:hidden"
+          className={` ${isScrolled ? 'text-white bg-primary': 'text-white'} hover:text-gray-300 transition-transform hover:scale-105 active:scale-95 xl:hidden`}
         >
           <FiMenu size={32} strokeWidth={1.5} />
         </button>
-        <Link to={'/contact'} className='hidden xl:block text-sm border border-white/30 bg-white/5 px-10 text-white py-4 uppercase text-sm backdrop-blur-sm rounded-full'>
+        <Link to={'/contact'} className={`hidden xl:block text-sm border border-white/30 ${isScrolled ? 'bg-primary' : 'bg-white/10'} px-10 text-white py-4 uppercase text-sm transition-all duration-200 backdrop-blur-sm rounded-full`}>
            get in touch
         </Link>
       </header>
@@ -108,9 +122,8 @@ const Header = () => {
       {/* ================= MOBILE MENU MODAL ================= */}
       <div className={`fixed flex flex-col h-full justify-between inset-0 z-[100] bg-[#0f0f0f] px-6 py-6 transition-opacity duration-300 xl:hidden ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
         <div className="flex items-center justify-between mb-8">
-           <div className="text-4xl text-white tracking-wide font-serif">
-            tripscribe
-          </div>
+                     <img className='-ml-3.5 -mt-2 h-14 xl:h-16 object-contain transition-all duration-200' src={isScrolled ? LogoBlue : LogoWhite} alt="" />
+
           <button 
             onClick={() => setIsMobileMenuOpen(false)}
             className="text-white hover:text-gray-300 transition-transform hover:rotate-90"

@@ -1,42 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const destinations = [
   {
     id: 1,
-    country: "Indonesia",
+    country: "Thailand",
     image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1938&auto=format&fit=crop", 
     label: "VISIT",
-    url:''
+    url: '/contact'
   },
   {
     id: 2,
-    country: "Thailand",
+    country: "Malaysia",
     image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2039&auto=format&fit=crop",
     label: "VISIT",
-     url:''
+    url: '/contact'
   },
   {
     id: 3,
-    country: "Turkey",
+    country: "Bali",
     image: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?q=80&w=2070&auto=format&fit=crop",
     label: "VISIT",
-     url:''
+    url: '/contact'
   },
   {
     id: 4,
-    country: "Japan",
+    country: "Vietnam",
     image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop",
     label: "VISIT",
-     url:''
+    url: '/contact'
   },
   {
     id: 5,
-    country: "Singapore",
-    image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?q=80&w=2071&auto=format&fit=crop",
+    country: "Azerbaijan",
+    image: "https://images.unsplash.com/photo-1607207685852-51dd32267d26?q=80&w=1974&auto=format&fit=crop",
     label: "VISIT",
-     url:''
+    url: '/contact'
+  },
+  {
+    id: 6,
+    country: "Kazakhstan", 
+    image: "https://images.unsplash.com/photo-1677475191981-653bcfcc3cd2?q=80&w=2093&auto=format&fit=crop",
+    label: "VISIT",
+    url: '/contact'
+  },
+  {
+    id: 7,
+    country: "Georgia",
+    image: "https://images.unsplash.com/photo-1565008576549-57569a49371d?q=80&w=2070&auto=format&fit=crop",
+    label: "VISIT",
+    url: '/contact'
   },
 ];
 
@@ -62,6 +77,8 @@ const FullScreenGallery = () => {
 
   return (
     // Changed h-screen to h-[100dvh] for better mobile browser support
+    <section className='bg-black w-full h-full'>
+    {/* <h3 className='text-4xl md:text-4xl xl:text-5xl font-messiri px-10 pb-10 text-center text-white'>Adventures Around the Globe</h3> */}
     <div className="relative w-full h-screen md:h-[50vh] xl:h-[100dvh] bg-black overflow-hidden font-sans">
       
       {/* --- BACKGROUND LAYER --- */}
@@ -93,7 +110,7 @@ const FullScreenGallery = () => {
       </div>
 
       {/* --- FOREGROUND COLUMNS (Navigation) --- */}
-      <div className="relative z-20 w-full h-full grid grid-cols-1 md:grid-cols-5">
+      <div className="relative z-20 w-full h-full grid grid-cols-1 md:grid-cols-7">
         {destinations.map((item, index) => (
           <div
             key={item.id}
@@ -121,7 +138,7 @@ const FullScreenGallery = () => {
                 <span className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/70">
                     {item.label}
                 </span>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-messiri text-white tracking-wide">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-messiri text-white tracking-wide">
                     {item.country}
                 </h2>
             </div>
@@ -134,16 +151,16 @@ const FullScreenGallery = () => {
                  <span className="hidden md:block text-[10px] tracking-[0.2em] font-bold uppercase text-white">
                     View More
                 </span>
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-md">
+                <Link to={'/contact'} className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-md">
                     <ArrowRight size={16} />
-                </div>
+                </Link>
             </div>
 
             {/* Active Indicator Line */}
             {activeIndex === index && (
                 <motion.div 
                     layoutId="active-line"
-                    className="absolute left-0 bottom-0 md:left-0 md:bottom-0 w-1 h-full md:w-full md:h-1 bg-white"
+                    className="absolute left-0 bottom-0 md:left-0 md:bottom-0 w-1 h-full md:w-full md:h-1 bg-primary"
                 />
             )}
           </div>
@@ -151,6 +168,7 @@ const FullScreenGallery = () => {
       </div>
 
     </div>
+    </section>
   );
 };
 

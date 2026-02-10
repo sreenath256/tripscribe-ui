@@ -5,20 +5,20 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "Asia's Thrilling Adventures: Hiking, Trekking, and More",
-      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
+      title: "Budget Travel Tips: How to Travel More for Less",
+      description: "Learn smart ways to save money on flights, hotels, food, and activities without compromising your travel experience.",
       image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800", // Mountain/Hiking
     },
     {
       id: 2,
-      title: "Unforgettable Experiences: Asia's Must-Visit Destinations",
-      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
+      title: "Best Time to Visit Popular Tourist Places",
+      description: "A seasonal guide to help you plan trips perfectly by avoiding crowds and getting the best weather and deals.",
       image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&q=80&w=800", // Coastal/Bali
     },
     {
       id: 3,
-      title: "Asia for the Soul: Discover Spiritual Retreats and Practices",
-      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
+      title: "Solo Travel Guide: Safety Tips and Best Destinations",
+      description: "Everything you need to know about solo travel, including safety advice, packing tips, and beginner-friendly destinations.",
       image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80&w=800", // Temple/City
     },
   ];
@@ -34,11 +34,11 @@ const Blog = () => {
             {/* Header Text Section */}
             <div className="mb-5">
               <h2 className="text-4xl md:text-4xl xl:text-5xl font-messiri font-medium text-black leading-[1.15] mb-5">
-                Read Our Latest Travel <br /> Blog & Tips Here
+                Travel Insights &<br/> Inspiration
               </h2>
               <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-lg">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et.
-              </p>
+              Read about destinations, planning advice, and travel ideas designed to make every journey
+              easy and enjoyable.</p>
             </div>
 
             {/* Featured Big Card */}
@@ -54,7 +54,7 @@ const Blog = () => {
               {/* Card Content */}
               <div className="absolute bottom-0 left-0 p-5 md:p-7 w-full">
                 <h3 className="text-2xl md:text-3xl font-messiri text-white mb-3 leading-tight max-w-sm">
-                  Tropical Bliss: Rejuvenate in Asia's Idyllic Beaches
+                  Top 10 Must-Visit Destinations in 2026
                 </h3>
                 <button className="flex items-center text-white text-xs uppercase tracking-widest hover:text-gray-200 transition-colors">
                   Read More 
