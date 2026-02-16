@@ -186,7 +186,7 @@ const Contact = () => {
                       href={dt.links}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-primary text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-200 transition-transform hover:-translate-y-1 duration-300"
+                      className="bg-primary text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-200 hover:text-black transition-transform hover:-translate-y-1 duration-300"
                     >
                       <span className="text-lg">{dt.icon}</span>
                     </a>

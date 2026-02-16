@@ -119,7 +119,7 @@ final return, making every step of your journey smooth, clear, and perfectly arr
 
           {/* Column 4: Newsletter (Span 4 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            <h4 className="text-2xl font-messiri text-white">Our Newsletter</h4>
+            <h4 className="text-2xl font-messiri text-white">Contact Us</h4>
             <p className="text-sm text-gray-400 leading-relaxed">
               Join our travel community and stay updated with exciting destinations, special offers, and expert travel tips.
             </p>

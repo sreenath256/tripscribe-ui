@@ -155,7 +155,7 @@ const GlassContactForm = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.5 }}
-      className="w-full max-w-md font-Quicksand p-8 xl:p-10 xl:py-16 rounded-3xl border border-white/20 bg-white/10 backdrop-blur-[6px] shadow-2xl relative overflow-hidden"
+      className="w-full max-w-md font-Quicksand p-8 xl:p-10 xl:py-16 rounded-3xl border border-white/20 bg-white/20 backdrop-blur-[6px] shadow-2xl relative overflow-hidden"
     >
       {/* Decorative gradient blob inside the glass card */}
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/30 rounded-full blur-3xl pointer-events-none"></div>
