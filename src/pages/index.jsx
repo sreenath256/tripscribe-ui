@@ -18,16 +18,7 @@ const index = () => {
       <article>
         <title>Best Travel Agency in Kerala | Tours and Travels in Kerala | TripScribe</title>
         <meta name="description" content="Looking for the Best Travel Agency in Kerala? Experience professional Tours and Travels in Kerala with TripScribe, where every journey is carefully planned for comfort, value, and unforgettable memories." />
-        <meta property="og:title" content="Best Travel Agency in Kerala | Tours and Travels in Kerala | TripScribe" />
-        <meta property="og:description" content="Looking for the Best Travel Agency in Kerala? Experience professional Tours and Travels in Kerala with TripScribe, where every journey is carefully planned for comfort, value, and unforgettable memories." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.tripscribe.in" />
-        <meta property="og:image" content="https://www.tripscribe.in/images/tripscribe-logo-white.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Best Travel Agency in Kerala | Tours and Travels in Kerala | TripScribe" />
-        <meta property="og:site_name" content="TripScribe" />
-        <meta property="og:locale" content="en_US" />
+        <link rel="canonical" href="https://www.tripscribe.in/" />
       </article>
       <div>
         <Banner />

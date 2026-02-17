@@ -8,7 +8,7 @@ export default defineConfig({
     tailwindcss(),
     react(),
     Sitemap({
-      hostname: 'https://www.tripscribe.com', // Replace with your actual live domain
+      hostname: 'https://tripscribe.in', // Replace with your actual live domain
       dynamicRoutes: [
         '/',
         '/about',
