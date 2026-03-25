@@ -7,6 +7,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { section } from 'framer-motion/client';
 
 const destinations = [
   {
@@ -68,7 +69,8 @@ const DestinationCard = ({ title, location, imageUrl, className }) => {
 
 const DestinationGallery = () => {
   return (
-    <div className="w-11/12 mx-auto py-10 xl:py-20">
+    <section className='w-full bg-black'>
+      <div className="w-11/12 mx-auto py-10 xl:py-20">
       
       {/* --- MOBILE VIEW: SWIPER CAROUSEL --- */}
       <div className="block md:hidden relative">
@@ -107,14 +109,14 @@ const DestinationGallery = () => {
         <div className="flex items-center justify-between mt-6 px-2">
           
           {/* Custom Pagination Dots (Styled via CSS/Tailwind) */}
-          <div className="custom-pagination flex gap-2 !w-auto [&_.swiper-pagination-bullet]:w-2.5 [&_.swiper-pagination-bullet]:h-2.5 [&_.swiper-pagination-bullet]:bg-gray-300 [&_.swiper-pagination-bullet-active]:!bg-black [&_.swiper-pagination-bullet-active]:w-6 [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:transition-all"></div>
+          <div className="custom-pagination flex gap-2 !w-auto [&_.swiper-pagination-bullet]:w-2.5 [&_.swiper-pagination-bullet]:h-2.5 [&_.swiper-pagination-bullet]:!bg-gray-300 [&_.swiper-pagination-bullet-active]:!bg-white [&_.swiper-pagination-bullet-active]:w-6 [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:transition-all"></div>
 
           {/* Custom Navigation Arrows */}
           <div className="flex gap-3">
-            <button className="custom-prev-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
+            <button className="custom-prev-btn w-10 h-10 rounded-full border border-gray-300 flex items-center bg-white justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
               <FiChevronLeft size={22} />
             </button>
-            <button className="custom-next-btn w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
+            <button className="custom-next-btn w-10 h-10 rounded-full border border-gray-300 flex items-center bg-white justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
               <FiChevronRight size={22} />
             </button>
           </div>
@@ -135,6 +137,7 @@ const DestinationGallery = () => {
       </div>
 
     </div>
+    </section>
   );
 };
 

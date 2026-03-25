@@ -22,8 +22,7 @@ const index = () => {
       </article>
       <div>
         <Banner />
-        <Destination />
-        <About />
+   
         <div className="bg-black text-white py-20">
           <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10">
             <div>
@@ -53,10 +52,13 @@ const index = () => {
 
         </div>
         <Country />
+        <About />
         {/* <Testimonisal /> */}
         <FinePlace />
+           
         <Faq />
         <Blog />
+          <Destination />
       </div>
     </>
   );

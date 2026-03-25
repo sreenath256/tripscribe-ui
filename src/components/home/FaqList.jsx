@@ -137,7 +137,7 @@ const FaqList = () => {
         </div>
 
         {/* FAQ Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 mb-5 xl:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 mb-10">
           <div>
             {leftColumnData.map((item) => (
               <FAQItem 
@@ -164,7 +164,7 @@ const FaqList = () => {
         </div>
 
         {/* Video Section */}
-        <div className="w-full relative h-[300px] xl:h-[600px] rounded-[3rem] overflow-hidden group">
+        <div className="w-full relative h-[250px] xl:h-[600px] rounded-[3rem] overflow-hidden group">
           <div className="absolute inset-0 bg-black/20 z-10 pointer-events-none"></div>
           <video
             className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -175,8 +175,8 @@ const FaqList = () => {
             src="https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4"
           />
           <div className="absolute inset-0 z-20 flex items-center justify-center">
-            <button className="bg-white/10 backdrop-blur-md p-6 rounded-full border border-white/20 group-hover:bg-white/20 transition-all">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-white">
+            <button className="bg-white/10 backdrop-blur-md p-3 lg:p-6 rounded-full border border-white/20 group-hover:bg-white/20 transition-all">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 md:w-8 h-4 md:h-8 text-white">
                   <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
                 </svg>
             </button>
