@@ -8,34 +8,35 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { section } from 'framer-motion/client';
+import { KashmirImage, KeralaDest, KulluManaliDest, MeghalayaDest } from '../../assets';
 
 const destinations = [
   {
     id: 1,
     title: 'Kerala',
     location: 'God\'s Own Country, India',
-    imageUrl: 'https://images.unsplash.com/photo-1593693411515-c20261bcad6e?q=80&w=2069&auto=format&fit=crop', // Houseboat/Backwaters
+    imageUrl: KeralaDest, // Houseboat/Backwaters
     className: 'md:col-span-1 md:row-span-2', // Tall card on the left
   },
   {
     id: 2,
     title: 'Kullu Manali',
     location: 'Himachal Pradesh',
-    imageUrl: 'https://images.unsplash.com/photo-1675515642093-4fd5b6cca657?q=80&w=1035&auto=format&fit=crop', // Snow/Mountains
+    imageUrl: KulluManaliDest, // Snow/Mountains
     className: 'md:col-span-1', // Top-right card 1
   },
   {
     id: 3,
     title: 'Meghalaya',
     location: 'North East India',
-    imageUrl: 'https://images.unsplash.com/photo-1521437620269-f477f5437820?q=80&w=1973&auto=format&fit=crop', // Lush Green/Nature
+    imageUrl: MeghalayaDest, // Lush Green/Nature
     className: 'md:col-span-1', // Top-right card 2
   },
   {
     id: 4,
     title: 'Kashmir',
     location: 'Jammu & Kashmir',
-    imageUrl: 'https://images.unsplash.com/photo-1627894485200-b92fb4353967?q=80&w=2070&auto=format&fit=crop', // Dal Lake/Shikara
+    imageUrl: KashmirImage, // Dal Lake/Shikara
     className: 'md:col-span-2', // Bottom-right wide card
   },
 ];
@@ -55,7 +56,7 @@ const DestinationCard = ({ title, location, imageUrl, className }) => {
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 p-6 flex justify-between items-end text-white">
         <div>
-          <h3 className="text-xl font-semibold mb-1 font-messiri tracking-wide">{title}</h3>
+          <h5 className="text-xl font-semibold mb-1 font-messiri tracking-wide">{title}</h5>
           <p className="text-sm text-gray-300">{location}</p>
         </div>
         {/* Arrow Icon */}
@@ -113,10 +114,10 @@ const DestinationGallery = () => {
 
           {/* Custom Navigation Arrows */}
           <div className="flex gap-3">
-            <button className="custom-prev-btn w-10 h-10 rounded-full border border-gray-300 flex items-center bg-white justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
+            <button aria-label="Previous slide" className="custom-prev-btn w-10 h-10 rounded-full border border-gray-300 flex items-center bg-white justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
               <FiChevronLeft size={22} />
             </button>
-            <button className="custom-next-btn w-10 h-10 rounded-full border border-gray-300 flex items-center bg-white justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
+            <button aria-label="Next slide" className="custom-next-btn w-10 h-10 rounded-full border border-gray-300 flex items-center bg-white justify-center hover:bg-primary hover:text-white  transition-all duration-300 active:scale-95 disabled:opacity-50">
               <FiChevronRight size={22} />
             </button>
           </div>

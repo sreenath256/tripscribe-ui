@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
+import { BeachSideVideo } from '../../assets';
 
 // --- Data ---
 const faqData = [
@@ -60,12 +61,12 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
           transition={{ duration: 0.3 }}
           className="ml-4 text-white"
         >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            strokeWidth={2} 
-            stroke="currentColor" 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
             className="w-5 h-5"
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -109,13 +110,13 @@ const FaqList = () => {
   return (
     <section className="bg-black min-h-screen py-16">
       <div className="w-11/12 mx-auto">
-        
+
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-5 lg:mb-16 gap-5 lg:gap-8">
           <div className="lg:w-1/2">
-            <h2 className="text-4xl md:text-4xl xl:text-5xl text-white font-messiri leading-tight">
-              Questions to Ask the<br/> Best Travel Agency<br/> in Kerala
-            </h2>
+            <h6 className="text-4xl md:text-4xl xl:text-5xl text-white font-messiri leading-tight">
+              Questions to Ask the<br /> Best Travel Agency<br /> in Kerala
+            </h6>
           </div>
           <div className="lg:w-1/3 flex flex-col items-start space-y-6">
             <p className="text-gray-400 leading-relaxed">
@@ -123,7 +124,7 @@ const FaqList = () => {
               arrangements. Here are clear answers to some of the most common doubts travelers have
               before starting their journey.
             </p>
-             <Link
+            <Link
               to={"/"}
               className="w-fit group flex items-center gap-3 rounded-full bg-primary hover:bg-white text-white hover:text-black transition duration-200 px-8 py-4 "
             >
@@ -140,8 +141,8 @@ const FaqList = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 mb-10">
           <div>
             {leftColumnData.map((item) => (
-              <FAQItem 
-                key={item.id} 
+              <FAQItem
+                key={item.id}
                 {...item}
                 // Pass true if this item's ID matches the state
                 isOpen={openId === item.id}
@@ -153,8 +154,8 @@ const FaqList = () => {
 
           <div>
             {rightColumnData.map((item) => (
-              <FAQItem 
-                key={item.id} 
+              <FAQItem
+                key={item.id}
                 {...item}
                 isOpen={openId === item.id}
                 onClick={() => handleToggle(item.id)}
@@ -172,13 +173,13 @@ const FaqList = () => {
             loop
             muted
             playsInline
-            src="https://videos.pexels.com/video-files/2169880/2169880-uhd_2560_1440_30fps.mp4"
+            src={BeachSideVideo}
           />
           <div className="absolute inset-0 z-20 flex items-center justify-center">
-            <button className="bg-white/10 backdrop-blur-md p-3 lg:p-6 rounded-full border border-white/20 group-hover:bg-white/20 transition-all">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 md:w-8 h-4 md:h-8 text-white">
-                  <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
-                </svg>
+            <button aria-label="Scroll down" className="bg-white/10 backdrop-blur-md p-3 lg:p-6 rounded-full border border-white/20 group-hover:bg-white/20 transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 md:w-8 h-4 md:h-8 text-white">
+                <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+              </svg>
             </button>
           </div>
         </div>

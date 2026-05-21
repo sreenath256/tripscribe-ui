@@ -2,54 +2,55 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ThailandImage, MalaysiaImage, BaliImage, VietnamImage, AzerbaijanImage, KazakhstanImage, GeorgiaImage } from '../../assets';
 
 const destinations = [
   {
     id: 1,
     country: "Thailand",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1938&auto=format&fit=crop", 
+    image: ThailandImage, 
     label: "VISIT",
     url: '/contact'
   },
   {
     id: 2,
     country: "Malaysia",
-    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2039&auto=format&fit=crop",
+    image: MalaysiaImage,
     label: "VISIT",
     url: '/contact'
   },
   {
     id: 3,
     country: "Bali",
-    image: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?q=80&w=2070&auto=format&fit=crop",
+    image: BaliImage,
     label: "VISIT",
     url: '/contact'
   },
   {
     id: 4,
     country: "Vietnam",
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop",
+    image: VietnamImage,
     label: "VISIT",
     url: '/contact'
   },
   {
     id: 5,
     country: "Azerbaijan",
-    image: "https://images.unsplash.com/photo-1607207685852-51dd32267d26?q=80&w=1974&auto=format&fit=crop",
+    image: AzerbaijanImage,
     label: "VISIT",
     url: '/contact'
   },
   {
     id: 6,
     country: "Kazakhstan", 
-    image: "https://images.unsplash.com/photo-1677475191981-653bcfcc3cd2?q=80&w=2093&auto=format&fit=crop",
+    image: KazakhstanImage,
     label: "VISIT",
     url: '/contact'
   },
   {
     id: 7,
     country: "Georgia",
-    image: "https://images.unsplash.com/photo-1565008576549-57569a49371d?q=80&w=2070&auto=format&fit=crop",
+    image: GeorgiaImage,
     label: "VISIT",
     url: '/contact'
   },
@@ -138,9 +139,9 @@ const FullScreenGallery = () => {
                 <span className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/70">
                     {item.label}
                 </span>
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-messiri text-white tracking-wide">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-messiri text-white tracking-wide">
                     {item.country}
-                </h2>
+                </h3>
             </div>
 
             {/* Bottom "View More" */}
@@ -151,7 +152,7 @@ const FullScreenGallery = () => {
                  <span className="hidden md:block text-[10px] tracking-[0.2em] font-bold uppercase text-white">
                     View More
                 </span>
-                <Link to={'/contact'} className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-md">
+                <Link aria-label="View More" to={'/contact'} className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-md">
                     <ArrowRight size={16} />
                 </Link>
             </div>

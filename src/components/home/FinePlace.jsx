@@ -7,6 +7,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { KeralaImage, KodaikkanalImage, KashmirImage, MeghalayaImage, OottyImage, KulluManaliImage, DelhiAgraJaipurImage, DelhiAgraImage } from '../../assets';
 
 const placesData = [
   {
@@ -14,7 +15,7 @@ const placesData = [
     title: "Kerala",
     location: "India",
     price: 40000,
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=2070&auto=format&fit=crop",
+    image: KeralaImage,
     category: ["DESTINATION", "STAYS"] 
   },
   {
@@ -22,7 +23,7 @@ const placesData = [
     title: "Delhi Agra",
     location: "India",
     price: 2000,
-    image: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2076&auto=format&fit=crop",
+    image: DelhiAgraImage,  
     category: ["DESTINATION", "STAYS"] 
   },
   {
@@ -30,7 +31,7 @@ const placesData = [
     title: "Delhi Agra Jaipur",
     location: "India",
     price: 3500,
-    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=2070&auto=format&fit=crop",
+    image: DelhiAgraJaipurImage,
     category: ["DESTINATION", "STAYS"] 
   },
   {
@@ -38,7 +39,7 @@ const placesData = [
     title: "Kullu Manali",
     location: "India",
     price: 18000,
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=2070&auto=format&fit=crop",
+    image: KulluManaliImage,
     category: ["DESTINATION", "STAYS"]
   },
   {
@@ -46,7 +47,7 @@ const placesData = [
     title: "Meghalaya",
     location: "India",
     price: 18000,
-    image: "https://images.unsplash.com/photo-1637043765564-a071ff91a09f?q=80&w=987&auto=format&fit=crop",
+    image: MeghalayaImage,
     category: ["STAYS", "DESTINATION"]
   },
   {
@@ -54,7 +55,7 @@ const placesData = [
     title: "Kashmir",
     location: "India",
     price: 24000,
-    image: "https://images.unsplash.com/photo-1627894485200-b92fb4353967?q=80&w=2070&auto=format&fit=crop",
+    image: KashmirImage,
     category: ["STAYS", "DESTINATION"]
   },
   {
@@ -62,7 +63,7 @@ const placesData = [
     title: "Ootty",
     location: "India",
     price: 48000,
-    image: "https://images.unsplash.com/photo-1707655315272-33a54a771068?q=80&w=987&auto=format&fit=crop",
+    image: OottyImage,
     category: ["DESTINATION", "STAYS"] 
   },
   {
@@ -70,7 +71,7 @@ const placesData = [
     title: "Kodaikkanal",
     location: "India",
     price: 26000,
-    image: "https://kodaikingtravels.com/wp-content/uploads/2023/09/hills-tour3.jpg",
+    image: KodaikkanalImage,
     category: ["DESTINATION", "STAYS"] 
   }
 ];
@@ -91,7 +92,7 @@ const EmptyState = ({ tabName }) => {
       <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
         <MapPin size={32} className="text-gray-400" />
       </div>
-      <h3 className="text-xl font-messiri font-bold text-gray-800 mb-2">No {tabName.toLowerCase()} listed yet</h3>
+      <p className="text-xl font-messiri font-bold text-gray-800 mb-2">No {tabName.toLowerCase()} listed yet</p>
       <p className="text-gray-500 max-w-xs mx-auto mb-8 text-sm">
         We are currently updating our curated list. Connect with us directly to plan your custom itinerary.
       </p>
@@ -127,7 +128,7 @@ const PlaceCard = ({ place }) => {
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
       <div className="absolute bottom-0 left-0 w-full p-6 flex justify-between items-end text-white z-10">
         <div className="flex flex-col gap-1">
-          <h3 className="text-2xl font-bold tracking-wide font-messiri">{place.title}</h3>
+          <h5 className="text-2xl font-bold tracking-wide font-messiri">{place.title}</h5>
           <div className="flex items-center gap-1.5 text-gray-300 text-sm">
             <MapPin size={16} className="text-gray-300" />
             <span>{place.location}</span>
@@ -146,13 +147,13 @@ const FinePlace = () => {
   );
 
   return (
-    <div className="w-full min-h-screen bg-white py-16 text-slate-800">
+    <div className="w-full min-h-screen bg-white py-16 text-slate-800" id='destination'>
       <div className="w-11/12 mx-auto">
         
         <div className="text-center mb-5 lg:mb-12">
-          <h1 className="text-4xl md:text-5xl font-messiri font-medium text-black mb-4 tracking-tight">
+          <h5 className="text-4xl md:text-5xl font-messiri font-medium text-black mb-4 tracking-tight">
             Travel Through the<br/> Soul of India
-          </h1>
+          </h5>
           <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
             Plan your trip with the best tour operators in Kerala, and step into journeys designed with clarity, comfort, and the right pace.
           </p>
@@ -221,10 +222,10 @@ const FinePlace = () => {
                   [&_.swiper-pagination-bullet]:transition-all">
                 </div>
                 <div className="flex gap-3">
-                  <button className="swiper-custom-prev w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                  <button aria-label="Previous slide" className="swiper-custom-prev w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                     <ChevronLeft size={20} />
                   </button>
-                  <button className="swiper-custom-next w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                  <button aria-label="Next slide" className="swiper-custom-next w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
                     <ChevronRight size={20} />
                   </button>
                 </div>

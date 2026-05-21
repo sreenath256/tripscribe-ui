@@ -6,15 +6,37 @@ import {
   RouterProvider,
   Outlet,
   useLocation,
+  Navigate,
 } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
-// Import your preloader here
 import { Header, Footer, NotFound, Loading } from "./components";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserDataFirst } from "./redux/actions/userActions.jsx";
+
 
 // Lazy load pages
 const Home = lazy(() => import("./pages/index"));
 const About = lazy(() => import("./pages/about"));
 const Contact = lazy(() => import("./pages/contact"));
+const Blogs = lazy(() => import("./pages/Blogs"));
+const BlogDetails = lazy(() => import("./pages/BlogDetails.jsx"));
+const Shop = lazy(() => import("./pages/shop"));
+const ShopDetails = lazy(() => import("./pages/StayDetails"));
+
+
+
+// Admin
+const Login = lazy(() => import("./pages/Login"));
+const Dashboard = lazy(() => import("./pages/Dashboard.jsx"));
+const StaysManagement = lazy(() => import("./pages/admin/StaysManagement.jsx"));
+const AdminBlogs = lazy(() => import("./pages/admin/AdminBlogs.jsx"));
+const AddBlog = lazy(() => import("./pages/admin/AddBlog.jsx"))
+const EditBlog = lazy(() => import("./pages/admin/EditBlog.jsx"))
+
+
+const StayFormPage = lazy(() => import("./pages/admin/StayFormPage.jsx"));
+const PackagesManagement = lazy(() => import("./pages/admin/PackagesManagement.jsx"));
 
 const Layout = () => {
   const location = useLocation();
@@ -34,7 +56,6 @@ const Layout = () => {
       }));
     };
 
-
     window.addEventListener("beforeunload", saveScrollPosition);
 
     return () => {
@@ -44,15 +65,18 @@ const Layout = () => {
   }, [location.key]);
 
   return (
-    <div className="app 2xl:max-w-[2500px] mx-auto min-h-screen flex flex-col justify-between">
+    <div className="app min-h-screen 2xl:max-w-[2500px] mx-auto flex flex-col justify-between">
       <Header />
-      <Outlet />
+      <main className="flex-1 w-full flex flex-col min-h-[100vh]">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
 };
 
-const router = createBrowserRouter([
+// --- PUBLIC ROUTER (No User Logged In) ---
+const publicRouter = createBrowserRouter([
   {
     element: <Layout />,
     children: [
@@ -80,7 +104,52 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/blogs",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Blogs />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/blogs/:id",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <BlogDetails />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/shop",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Shop />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/stays/:id",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <ShopDetails />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/login",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Login />
+          </Suspense>
+        ),
+      }
     ],
+  },
+  {
+    path: "/dashboard",
+    // Redirect unauthorized users to login
+    element: <Navigate to="/login" replace />
   },
   {
     path: "*",
@@ -92,25 +161,152 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
-  const [isLoading, setIsLoading] = useState(true);
 
+// --- ADMIN ROUTER (User Logged In) ---
+const adminRouter = createBrowserRouter([
+  {
+    path: "/dashboard",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Dashboard />
+      </Suspense>
+    ),
+    children: [
+      {
+        index: true,
+        element: <Navigate to="stays" replace />
+      },
+      {
+        path: "stays",
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <StaysManagement />
+              </Suspense>
+            ),
+          },
+          {
+            path: "add",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <StayFormPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "edit/:id",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <StayFormPage />
+              </Suspense>
+            ),
+          }
+        ]
+      },
+      {
+        path: "blogs",
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <AdminBlogs />
+              </Suspense>
+            ),
+          },
+          {
+            path: "add",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <AddBlog />
+              </Suspense>
+            ),
+          },
+          {
+            path: "edit/:id",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <EditBlog />
+              </Suspense>
+            ),
+          }
+        ]
+      },
+      {
+        path: "packages",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <PackagesManagement />
+          </Suspense>
+        ),
+      }
+    ]
+  },
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: "/stays/:id",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <ShopDetails />
+          </Suspense>
+        ),
+      }
+    ]
+  },
+  {
+    path: "/",
+    // Restrict home page and redirect to dashboard for admins
+    element: <Navigate to="/dashboard/stays" replace />
+  },
+  {
+    path: "/login",
+    // Prevent logged in users from seeing login page
+    element: <Navigate to="/dashboard/stays" replace />
+  },
+  {
+    path: "*",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <NotFound />
+      </Suspense>
+    ),
+  },
+]);
+
+
+function App() {
+  const { user, loading } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  // Authenticate user on mount
   useEffect(() => {
-    const fakeDataFetch = () => {
+    const fetchAuthSession = async () => {
+      await dispatch(getUserDataFirst());
+      // Artificial delay to preserve the existing preloader visual effect
       setTimeout(() => {
-        setIsLoading(false);
+        setIsInitialLoad(false);
       }, 1500);
     };
 
-    fakeDataFetch();
-  }, []);
+    fetchAuthSession();
+  }, [dispatch]);
+
+  // Determine if the app is still loading based on the manual timer OR the Redux state
+  const isAppLoading = false;
 
   return (
     <>
+      <Toaster position="top-center" />
       <AnimatePresence>
-        {isLoading && <Loading key="preloader" />}
+        {isAppLoading && <Loading key="preloader" />}
       </AnimatePresence>
-      {!isLoading && (
+
+      {!isAppLoading && (
         <motion.div
           key="main-content"
           initial={{ opacity: 0 }}
@@ -118,7 +314,8 @@ function App() {
           transition={{ duration: 1.0, ease: "easeInOut" }}
           className="w-full min-h-screen"
         >
-          <RouterProvider router={router} />
+          {/* Dynamically swap the entire App Router based on Redux User State */}
+          <RouterProvider router={user ? adminRouter : publicRouter} />
         </motion.div>
       )}
     </>

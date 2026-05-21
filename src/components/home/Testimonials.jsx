@@ -69,9 +69,9 @@ const TestimonialMarquee = () => {
 
               {/* Text Info */}
               <div className="flex flex-col">
-                <h4 className="text-base font-messiri font-medium text-white tracking-wide">
+                <p className="text-base font-messiri font-medium text-white tracking-wide">
                   {item.name}
-                </h4>
+                </p>
                 <span className="text-[10px] uppercase tracking-wider text-gray-400">
                   {item.role}
                 </span>

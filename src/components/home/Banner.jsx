@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  FiArrowRight,
-  FiUser,
-  FiSend,
-} from "react-icons/fi";
+import { FiArrowRight, FiUser, FiSend } from "react-icons/fi";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import { MdOutlineMarkChatUnread } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Banner = () => {
-  // Background images array
+  // const images = [
+  //   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=50&w=1080&auto=format&fit=crop", 
+  //   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=50&w=1080&auto=format&fit=crop",
+  //   "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=50&w=1080&auto=format&fit=crop",
+  // ];
+
   const images = [
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=50&w=2070&auto=format&fit=crop", // Mountains
-    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=50&w=2070&auto=format&fit=crop", // Hills
-    "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=50&w=2070&auto=format&fit=crop", // Valley
-  ];
+    "/images/banner1.webp",
+    "/images/banner2.webp",
+    "/images/banner3.webp"
+  ]
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Cycle through images every 6 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -28,62 +28,66 @@ const Banner = () => {
   }, [images.length]);
 
   return (
-    <div className="relative min-h-screen md:h-screen w-full overflow-hidden bg-gray-900 text-white font-sans">
-      {/* --- BACKGROUND LAYER (Ken Burns Effect) --- */}
-      <div className="absolute inset-0 z-0">
+    // FIX 1 (CLS): Changed min-h-screen to min-h-[100svh]. 
+    // svh (small viewport height) prevents layout jumps when mobile browsers hide the address bar.
+    <div className="relative min-h-[100svh] md:h-[100svh] w-full overflow-hidden bg-gray-900 text-white font-sans">
+
+      {/* --- BACKGROUND LAYER --- */}
+      <div className="absolute inset-0 z-0 bg-gray-900">
         {images.map((img, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
-              index === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
           >
             <img
               src={img}
               alt={`Slide ${index}`}
-              className={`h-full w-full object-cover transform transition-transform duration-[10000ms] ease-linear ${
-                index === currentIndex ? "scale-125" : "scale-100"
-              }`}
+              // FIX 2 (LCP): Tell the browser to load the first image immediately, and lazy load the rest.
+              fetchPriority={index === 0 ? "high" : "auto"}
+              loading={index === 0 ? "eager" : "lazy"}
+              className={`h-full w-full object-cover transform transition-transform duration-[10000ms] ease-linear ${index === currentIndex ? "scale-125" : "scale-100"
+                }`}
             />
-            {/* Dark Overlay for text readability */}
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
         ))}
       </div>
 
       {/* --- CONTENT LAYER --- */}
-      <div className="relative py-10 pt-40 md:pt-0 md:py-0 z-10 w-11/12 mx-auto h-full ">
-        {/* LAYOUT FIX: Used Grid to separate Left (Text) and Right (Form) */}
+      <div className="relative py-10 pt-32 md:pt-0 md:py-0 z-10 w-11/12 mx-auto h-full">
         <div className="grid grid-cols-1 md:grid-cols-2 h-full items-center">
-          
-          {/* 1. Left Content Area */}
-          <div className="flex flex-col justify-center space-y-5 pr-0 lg:pr-10">
-            {/* Main Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              className="font-messiri text-5xl xl:text-7xl leading-none"
-            >
-              Best Travel<br /> Agency in Kerala
-            </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
+          <div className="flex flex-col justify-center space-y-5 pr-0 lg:pr-10 mt-10 md:mt-0">
+            {/* FIX 3 (LCP): Removed Framer Motion from the main H1. 
+                This text must paint the absolute millisecond the page loads. */}
+            <h1 className="font-messiri text-5xl xl:text-7xl leading-none">
+              Best Travel<br /> Agency in Kerala
+            </h1>
+
+            {/* We keep Framer Motion on the paragraph and button for the cool effect, 
+                but reduced the delay so it doesn't hold up the paint process. */}
+            {/* <motion.p
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+              transition={{ delay: 0.1, duration: 0.4 }}
             >
               Looking for the best travel agency in Kerala to plan your journey
               with ease and confidence? TripScribe ensures every detail is
               managed professionally, delivering smooth, well-organized travel
               experiences from start to finish.
-            </motion.p>
+            </motion.p> */}
+            <p >
+              Looking for the best travel agency in Kerala to plan your journey
+              with ease and confidence? TripScribe ensures every detail is
+              managed professionally, delivering smooth, well-organized travel
+              experiences from start to finish.
+            </p>
 
-            {/* CTA Button */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
+              transition={{ delay: 0.2, duration: 0.4 }}
             >
               <Link
                 to={"/contact"}
@@ -98,8 +102,7 @@ const Banner = () => {
             </motion.div>
           </div>
 
-          {/* 2. Right Side: Glass Contact Form */}
-          <div className="mt-10 md:mt-0 flex justify-center items-center h-full">
+          <div className="mt-8 md:mt-0 flex justify-center items-center h-full">
             <GlassContactForm />
           </div>
         </div>
@@ -107,6 +110,7 @@ const Banner = () => {
     </div>
   );
 };
+
 
 const GlassContactForm = () => {
   // 1. State for form inputs
@@ -143,11 +147,11 @@ const GlassContactForm = () => {
     window.open(whatsappUrl, "_blank");
 
     // 🔄 Reset form
-  setFormData({
-    name: "",
-    email: "",
-    message: "",
-  });
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
@@ -160,7 +164,7 @@ const GlassContactForm = () => {
       {/* Decorative gradient blob inside the glass card */}
       <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/30 rounded-full blur-3xl pointer-events-none"></div>
 
-      <h3 className="text-4xl font-messiri mb-2 text-white">Get in Touch</h3>
+      <p className="text-4xl font-messiri mb-2 text-white">Get in Touch</p>
       <p className="text-gray-200 text-sm md:text-base mb-6">
         Fill out the form below to start your journey.
       </p>

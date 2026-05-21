@@ -1,16 +1,15 @@
-import React from "react";
-import {
-  About,
-  Banner,
-  Blog,
-  Country,
-  Destination,
-  Faq,
-  FinePlace,
-  Testimonisal,
-} from "../components";
+import React, { Suspense } from "react";
+import Banner from "../components/home/Banner";
 import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
+
+
+const About = React.lazy(() => import("../components/home/About"));
+const Blog = React.lazy(() => import("../components/home/Blog"));
+const Country = React.lazy(() => import("../components/home/Country"));
+const Destination = React.lazy(() => import("../components/home/Destination"));
+const Faq = React.lazy(() => import("../components/home/FaqList"));
+const FinePlace = React.lazy(() => import("../components/home/FinePlace"));
 
 const index = () => {
   return (
@@ -20,9 +19,9 @@ const index = () => {
         <meta name="description" content="Looking for the Best Travel Agency in Kerala? Experience professional Tours and Travels in Kerala with TripScribe, where every journey is carefully planned for comfort, value, and unforgettable memories." />
         <link rel="canonical" href="https://www.tripscribe.in/" />
       </article>
-      <div>
+      <div className="flex flex-col w-full">
         <Banner />
-   
+
         <div className="bg-black text-white py-20">
           <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10">
             <div>
@@ -49,16 +48,15 @@ const index = () => {
               </Link>
             </div>
           </div>
-
         </div>
+        <Suspense fallback={<div className="min-h-screen bg-black"></div>}>
         <Country />
         <About />
-        {/* <Testimonisal /> */}
         <FinePlace />
-           
         <Faq />
         <Blog />
-          <Destination />
+        <Destination />
+      </Suspense>
       </div>
     </>
   );

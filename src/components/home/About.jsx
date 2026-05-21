@@ -3,16 +3,17 @@ import { FiShield, FiCamera, FiHome, FiPlay, FiArrowRight } from 'react-icons/fi
 import { Link } from 'react-router-dom';
 import { IoPricetagsOutline } from "react-icons/io5";
 import { PiCarProfileLight } from "react-icons/pi";
+import { Image1 } from '../../assets';
 
 
 const ExperienceSection = () => {
   return (
-    <section className="w-11/12 mx-auto py-16">
+    <section className="w-11/12 mx-auto py-16" id='about-us'>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-20">
           <div>
-            <h2 className="text-4xl md:text-4xl xl:text-5xl font-messiri">
+            <h4 className="text-4xl md:text-4xl xl:text-5xl font-messiri">
               Experiences Crafted<br/> for Every Traveler
-            </h2>
+            </h4>
           </div>
           <div className="flex flex-col gap-5">
             <p className='font-medium'>
@@ -64,7 +65,7 @@ const ExperienceSection = () => {
           {/* Main Large Image */}
           <div className="rounded-[2.5rem] overflow-hidden shadow-2xl h-[300px] lg:h-[600px] w-full">
             <img 
-              src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?q=80&w=1975&auto=format&fit=crop" 
+              src={Image1} 
               alt="Nature Landscape" 
               className="w-full h-full object-cover"
             />
@@ -86,9 +87,9 @@ const FeatureItem = ({ icon, title, desc }) => (
     </div>
     {/* Text */}
     <div>
-      <h3 className="text-xl md:text-2xl font-messiri text-gray-900 mb-1">
+      <h5 className="text-xl md:text-2xl font-messiri text-gray-900 mb-1">
         {title}
-      </h3>
+      </h5>
       <p className=" text-gray-500 leading-relaxed ">
         {desc}
       </p>
